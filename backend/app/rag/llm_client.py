@@ -68,21 +68,14 @@ def _call_gemini(prompt: str, system_prompt: str) -> dict:
                     contents=prompt,
                     config=config,
                 )
-                return {"answer": response.text, "model_used": model_name}
-            except ServerError as e:
-                # 503 overload — try next model
+            except Exception as e:
+                # Store the error and try the next fallback model
                 last_error = e
                 continue
-            except Exception as e:
-                # Non-503 error (auth, not found, etc.) — don't retry
-                return {"answer": f"[Gemini Error: {str(e)}]", "model_used": model_name}
 
         # All models failed
         return {
-            "answer": (
-                "All Gemini models are currently experiencing high demand. "
-                "This is a temporary Google server issue — please try again in a few minutes."
-            ),
+            "answer": f"[Gemini Error: All models failed. Last error: {str(last_error)}]",
             "model_used": primary_model,
         }
 
