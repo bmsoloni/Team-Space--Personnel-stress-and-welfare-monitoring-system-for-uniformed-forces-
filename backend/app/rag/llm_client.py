@@ -28,13 +28,11 @@ def _call_ollama(prompt: str, system_prompt: str, model: str) -> dict:
             msg = f"AI model error: {error_str}. Ensure Ollama is running with model '{model}'."
         return {"answer": msg, "model_used": model}
 
-# Ordered fallback list — primary model first, then alternatives
 _GEMINI_FALLBACK_MODELS = [
-    "gemini-1.5-flash",
-    "gemini-1.5-flash-8b",
-    "gemini-1.5-pro",
-    "gemini-2.0-flash-exp",
-    "gemini-2.5-flash",
+    "gemini-3.8-flash",
+    "gemini-3.7-flash",
+    "gemini-3.6-flash",
+    "gemini-3.5-flash",
 ]
 
 def _call_gemini(prompt: str, system_prompt: str) -> dict:
@@ -47,11 +45,11 @@ def _call_gemini(prompt: str, system_prompt: str) -> dict:
         if not api_key:
             return {
                 "answer": "Gemini API key is not configured. Please set GEMINI_API_KEY in the backend .env file.",
-                "model_used": "gemini-2.5-flash",
+                "model_used": "gemini-3.8-flash",
             }
 
         client = genai.Client(api_key=api_key)
-        primary_model = current_app.config.get("GEMINI_MODEL", "gemini-2.5-flash")
+        primary_model = current_app.config.get("GEMINI_MODEL", "gemini-3.8-flash")
 
         # Build fallback list: primary first, then the rest (deduped, preserving order)
         candidates = [primary_model] + [m for m in _GEMINI_FALLBACK_MODELS if m != primary_model]
@@ -81,4 +79,4 @@ def _call_gemini(prompt: str, system_prompt: str) -> dict:
         }
 
     except Exception as e:
-        return {"answer": f"[Gemini Error: {str(e)}]", "model_used": "gemini-2.5-flash"}
+        return {"answer": f"[Gemini Error: {str(e)}]", "model_used": "gemini-3.8-flash"}
