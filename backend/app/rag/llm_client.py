@@ -47,11 +47,11 @@ def _call_gemini(prompt: str, system_prompt: str) -> dict:
         if not api_key:
             return {
                 "answer": "Gemini API key is not configured. Please set GEMINI_API_KEY in the backend .env file.",
-                "model_used": "gemini-3.5-flash",
+                "model_used": "gemini-2.5-flash",
             }
 
         client = genai.Client(api_key=api_key)
-        primary_model = current_app.config.get("GEMINI_MODEL", "gemini-3.5-flash")
+        primary_model = current_app.config.get("GEMINI_MODEL", "gemini-2.5-flash")
 
         # Build fallback list: primary first, then the rest (deduped, preserving order)
         candidates = [primary_model] + [m for m in _GEMINI_FALLBACK_MODELS if m != primary_model]
@@ -68,6 +68,7 @@ def _call_gemini(prompt: str, system_prompt: str) -> dict:
                     contents=prompt,
                     config=config,
                 )
+                return {"answer": response.text, "model_used": model_name}
             except Exception as e:
                 # Store the error and try the next fallback model
                 last_error = e
@@ -80,4 +81,4 @@ def _call_gemini(prompt: str, system_prompt: str) -> dict:
         }
 
     except Exception as e:
-        return {"answer": f"[Gemini Error: {str(e)}]", "model_used": "gemini-3.5-flash"}
+        return {"answer": f"[Gemini Error: {str(e)}]", "model_used": "gemini-2.5-flash"}
