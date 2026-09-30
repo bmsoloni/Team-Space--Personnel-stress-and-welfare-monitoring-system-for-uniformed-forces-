@@ -1,0 +1,43 @@
+﻿version: "3.8"
+services:
+  db:
+    image: mysql:8.0
+    container_name: swm_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: stress_welfare_db
+      MYSQL_USER: swm_user
+      MYSQL_PASSWORD: swm_password
+    ports: ["3306:3306"]
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/schema/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: swm_backend
+    restart: always
+    ports: ["5000:5000"]
+    volumes: ["./backend:/app"]
+    depends_on: [db]
+    environment:
+      - FLASK_ENV=development
+      - DB_HOST=db
+      - DB_USER=swm_user
+      - DB_PASSWORD=swm_password
+      - DB_NAME=stress_welfare_db
+
+  frontend:
+    image: node:20-alpine
+    container_name: swm_frontend
+    working_dir: /app
+    command: sh -c "npm install && npm run dev -- --host"
+    ports: ["5173:5173"]
+    volumes: ["./frontend:/app"]
+    depends_on: [backend]
+
+volumes:
+  mysql_data:

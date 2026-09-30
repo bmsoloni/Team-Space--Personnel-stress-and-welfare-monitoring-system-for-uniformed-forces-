@@ -1,0 +1,28 @@
+﻿CENTRAL ARMED POLICE FORCES & CRPF MENTAL WELFARE POLICY GUIDELINES (2023 REVISION)
+Document Reference: MHA/CRPF/WEL-2023/8812
+
+1. OBJECTIVE AND SCOPE
+This guideline outlines mandatory welfare, psychological counseling, and operational fatigue mitigation policies for all CRPF units deployed in Field, High Altitude, and Counter-Insurgency theaters.
+
+2. OPERATIONAL ROTATION AND FATIGUE THRESHOLDS
+2.1 Continuous Field Posting Norms:
+- High Altitude / Extreme Weather (Siachen, Leh, Ladakh): Maximum continuous tenure is 90 days. Upon reaching 90 days, personnel must receive a minimum 14-day mandatory de-stress rest cycle at base camp.
+- Active Counter-Insurgency (LWE / Chhattisgarh / J&K): Personnel on active operational duty exceeding 60 consecutive days must be provided 48 hours of unit-level complete downtime.
+- Mandatory Annual Leave: Every jawan is entitled to 60 days Annual Leave and 15 days Casual Leave per calendar year.
+
+3. LEAVE DENIAL MITIGATION & ESCALATION PROTOCOL
+3.1 Automatic Grievance Review:
+- Any denial of leave application where the applicant has served >120 consecutive days without leave will trigger an automatic notification to the Battalion Second-in-Command (2IC).
+- Emergency leave applications citing acute domestic distress, family illness, or bereavement must be cleared within 24 hours.
+
+4. PSYCHOLOGICAL HEALTH SURVEILLANCE & EARLY WARNING SIGNS
+4.1 Behavioral and Physiological Indicators:
+- Chronic sleep deprivation (<5 hours sleep over 3 consecutive duty days).
+- Social isolation or withdrawal from mess and barracks activities.
+- Spike in disciplinary reports or erratic emotional outbursts.
+- Low scores on the standardized PHQ-9 or GAD-7 wellness self-assessments (<50/100).
+
+5. INTERVENTION TIERS
+- Tier 1 (Unit Level): Peer Buddy System check-in, informal session with Company Commander.
+- Tier 2 (Medical Officer): Clinical evaluation by Unit Medical Officer within 48 hours of High Risk alert.
+- Tier 3 (Psychiatric Referral): Transfer to Composite Hospital or Base Hospital for formal psychiatric counseling and temporary weapon withdrawal as a precautionary measure.
